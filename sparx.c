@@ -36,8 +36,8 @@ int main() {
         }
         printf("\n");
     }
-  printf("Addition of the 2 Matrix\n");
-  int add[row1] [col1];
+    printf("Addition of the 2 Matrix\n");
+    int add[row1] [col1];
       for (int i = 0; i < row1; i++) {
         for (int j = 0; j < col1; j++) {
             add[i][j]=m1[i][j]+m2[i][j];
@@ -63,29 +63,36 @@ int main() {
         }
         printf("\n");
     }
-    
-    int comp[row1][col1];
-    int k=0;
-    printf("\n");
+    int non;
     for (int i = 0; i < row1; i++) {
       for (int j = 0; j < col1; j++) {
         if(trs[i][j]!=0){
-            comp[k][0]=j;
-            comp[k][1]=i;
-            comp[k][2]=trs[i][j];
-            k++;
-            }
+          non++;
           
+          }
         }
       }
-    printf("The compact matrix is \n:");
+    int comp[non+1][3];
+    comp[0][0]=non+1;
+    comp[0][1]=3;
+    comp[0][2]=non;
+    int k=1;
     for (int i = 0; i < row1; i++) {
-    for (int j = 0; j < col1; j++) {
-            printf("%d \t",comp[i][j]);
+      for (int j = 0; j < col1; j++) {
+        if (add[i][j]!=0){
+          comp[k][0]=i;
+          comp[k][1]=j;
+          comp[k][2]=trs[i][j];
+          k++;
+          }
         }
-        printf("\n");
-    }
-  
+      }
+    printf("\n");
+    printf("Compact Representation\n");
+   for(int i=0;i<non+1;i++){
+   printf("%d\t%d\t%d\n",comp[i][0],comp[i][1],comp[i][2]);
+   }
+    
       
     return 0;
 }
